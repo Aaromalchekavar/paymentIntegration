@@ -122,6 +122,9 @@ nodemailer.createTestAccount((err, account) => {
                 text-decoration:none;
                 background:#000;
             }
+            .left{
+                text-align: left;
+            }
            
             </style>
         </head>
@@ -135,25 +138,32 @@ nodemailer.createTestAccount((err, account) => {
                          </div>
                          <div class="content">
                             <h1>Payment Success !</h1>
-                            <p>Hey ${name}! Donation of $ ${amount} is succesfull</p>
+                            <h3>Hey ${name}! </h3>
+                            <h1>$ ${amount} Donated</h5>
                          </div>
                          
                       </div>
                    </div>
                 </div>
              </div>
+             <h4>Transanction Details</h4>
+             <div class="left"> 
+             <p>Amount : $ ${amount} </p>
+             <p>Status : Success </p>
+             <p>ID     : I9674HGHU98 </p>
+             </div>
         </body>
         </html>`
     };
 
-    // transporter.sendMail(message, (err, info) => {
-    //     if (err) {
-    //         console.log('Error occurred. ' + err.message);
-    //         return process.exit(1);
-    //     }
+    transporter.sendMail(message, (err, info) => {
+        if (err) {
+            console.log('Error occurred. ' + err.message);
+            return process.exit(1);
+        }
 
-    //     console.log('Message sent: %s', info.messageId);
-    // });
+        console.log('Message sent: %s', info.messageId);
+    });
 });
 
 res.render('success.ejs',{name:name,email:email})
