@@ -5,7 +5,7 @@ const router = require('./routes/paymentRoutes')
 
 
 //initializing port
-const port = process.env.PORT || 4590
+const port = process.env.PORT || 4599
 
 //middlewares
 app.use(express.json());

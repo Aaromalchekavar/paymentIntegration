@@ -146,14 +146,14 @@ nodemailer.createTestAccount((err, account) => {
         </html>`
     };
 
-    transporter.sendMail(message, (err, info) => {
-        if (err) {
-            console.log('Error occurred. ' + err.message);
-            return process.exit(1);
-        }
+    // transporter.sendMail(message, (err, info) => {
+    //     if (err) {
+    //         console.log('Error occurred. ' + err.message);
+    //         return process.exit(1);
+    //     }
 
-        console.log('Message sent: %s', info.messageId);
-    });
+    //     console.log('Message sent: %s', info.messageId);
+    // });
 });
 
 res.render('success.ejs',{name:name,email:email})
