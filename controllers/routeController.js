@@ -4,7 +4,21 @@ require('dotenv').config()
 let email;
 let name;
 let amount;
-
+//generates random id;
+let tr_id = () => {
+    let s4 = () => {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
+    //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+let currentDate = new Date();
+let cDay = currentDate.getDate();
+let cMonth = currentDate.getMonth() + 1;
+let cYear = currentDate.getFullYear();
+let time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
 
 module.exports.homeGET = (req,res)=>{
     res.render('index.ejs',{title:process.env.TITLE})
@@ -138,19 +152,26 @@ nodemailer.createTestAccount((err, account) => {
                          </div>
                          <div class="content">
                             <h1>Payment Success !</h1>
-                            <h3>Hey ${name}! </h3>
+                            <h4 style="font-weight:bold;">Hey ${name}! </h4>
                             <h1>$ ${amount} Donated</h5>
+                            <h1 style="color: rgb(66, 56, 56);font-size: small;font-weight: bold;">THE SPARK FOUNDATION</h1>
                          </div>
                          
                       </div>
                    </div>
                 </div>
              </div>
+             </br>
+             </br>
+             </br>
+             </br>
              <h4>Transanction Details</h4>
              <div class="left"> 
              <p>Amount : $ ${amount} </p>
              <p>Status : Success </p>
-             <p>ID     : I9674HGHU98 </p>
+             <p>ID     : ${tr_id()} </p>
+             <p>Transanction Date : ${"<b>" + cDay + "/" + cMonth + "/" + cYear + "</b>"} </p>
+             <p>Time : ${time}</p>
              </div>
         </body>
         </html>`
