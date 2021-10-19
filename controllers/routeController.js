@@ -29,7 +29,14 @@ module.exports.donate = (req,res)=>{
     email = req.body.email
     name = req.body.name
     amount = req.body.amount
-    console.log(name,email,amount)
+    console.log("")
+    console.log("")
+    console.log("")
+    console.log("=================== The Sparks Foundation - Internship ===========================")
+    console.log(`                          Donor Name : ${name}`)
+    console.log(`                               Email : ${email}`)
+    console.log(`                              Amount : ${amount}`)
+    console.log("==================================================================================")
     res.render('donate.ejs',{amount:amount})
 }
 
